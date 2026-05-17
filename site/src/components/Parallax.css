@@ -25,7 +25,8 @@
     0 8px 16px -8px rgba(0, 0, 0, 0.3);
 }
 
-/* All direct layer children fill the card by default */
+/* Tilt.Layer wrappers (direct children) — fill the card so descendants can
+ * position themselves relative to the full card area. */
 .px-card > * {
   position: absolute;
   inset: 0;
@@ -35,15 +36,13 @@
 /* === Mountain card === */
 
 .px-card-mountain .px-sky {
-  /* Sunset gradient. The ground is the near-mountains layer, not the sky. */
   background: linear-gradient(180deg, #fda4af 0%, #fb923c 22%, #c084fc 55%, #4338ca 100%);
 }
 
 .px-sun {
+  position: absolute;
   top: 14%;
   left: 64%;
-  right: auto;
-  bottom: auto;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -53,26 +52,22 @@
 }
 
 .px-mountains-back {
-  top: auto;
+  position: absolute;
   bottom: 0;
   left: -5%;
-  right: -5%;
-  inset: auto;
   width: 110%;
-  height: 52%;
-  color: rgba(76, 29, 149, 0.6);
+  height: 56%;
+  color: rgba(76, 29, 149, 0.65);
 }
 
 .px-mountains-front {
-  /* Anchored to bottom edge so the lower half acts as solid ground. */
-  top: auto;
+  /* Front range fills the bottom half, acting as solid ground. */
+  position: absolute;
   bottom: 0;
   left: -5%;
-  right: -5%;
-  inset: auto;
   width: 110%;
-  height: 44%;
-  color: rgba(30, 27, 75, 0.95);
+  height: 48%;
+  color: rgba(30, 27, 75, 0.96);
 }
 
 /* === City card === */
@@ -82,36 +77,29 @@
 }
 
 .px-buildings-far {
-  top: auto;
-  bottom: 14%;
+  position: absolute;
+  bottom: 12%;
   left: -5%;
-  right: -5%;
-  inset: auto;
   width: 110%;
   height: 50%;
-  color: rgba(124, 58, 237, 0.45);
+  color: rgba(124, 58, 237, 0.5);
 }
 
 .px-buildings-mid {
-  top: auto;
+  position: absolute;
   bottom: 0;
   left: -5%;
-  right: -5%;
-  inset: auto;
   width: 110%;
-  height: 45%;
-  color: rgba(15, 23, 42, 0.92);
+  height: 42%;
+  color: rgba(15, 23, 42, 0.96);
 }
 
-/* Neon sign — centered band ABOVE buildings, BELOW title */
+/* Neon sign — middle band, between the title at top and the buildings */
 .px-neon {
-  top: 36%;
+  position: absolute;
+  top: 38%;
   left: 50%;
   transform: translateX(-50%);
-  right: auto;
-  bottom: auto;
-  inset: auto;
-  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,7 +108,7 @@
 
 .px-neon-main {
   font-family: var(--font-mono);
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 900;
   letter-spacing: 0.1em;
   color: #fef3c7;
@@ -133,9 +121,9 @@
 
 .px-neon-sub {
   margin-top: 6px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.32em;
   color: #fbcfe8;
   text-shadow:
     0 0 5px rgba(236, 72, 153, 0.7),
@@ -144,11 +132,10 @@
 
 /* === Title — top-left by default, bottom-left if .px-title-bottom === */
 .px-title {
+  position: absolute;
   top: 18px;
   left: 18px;
   right: 18px;
-  bottom: auto;
-  inset: auto;
   display: flex;
   flex-direction: column;
   gap: 4px;
