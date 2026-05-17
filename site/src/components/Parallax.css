@@ -35,43 +35,44 @@
 /* === Mountain card === */
 
 .px-card-mountain .px-sky {
-  background: linear-gradient(180deg, #fbcfe8 0%, #fda4af 32%, #f97316 62%, #4338ca 100%);
+  /* Sunset gradient. The ground is the near-mountains layer, not the sky. */
+  background: linear-gradient(180deg, #fda4af 0%, #fb923c 22%, #c084fc 55%, #4338ca 100%);
 }
 
 .px-sun {
-  /* override inset to position the sun precisely */
-  top: 16%;
+  top: 14%;
   left: 64%;
   right: auto;
   bottom: auto;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: radial-gradient(circle, #fef3c7 0%, #fb923c 55%, transparent 75%);
   filter: blur(1px);
-  box-shadow: 0 0 40px rgba(251, 146, 60, 0.65);
+  box-shadow: 0 0 36px rgba(251, 146, 60, 0.6);
 }
 
 .px-mountains-back {
   top: auto;
-  bottom: 22%;
+  bottom: 0;
   left: -5%;
   right: -5%;
   inset: auto;
   width: 110%;
-  height: 36%;
-  color: rgba(76, 29, 149, 0.55);
+  height: 52%;
+  color: rgba(76, 29, 149, 0.6);
 }
 
 .px-mountains-front {
+  /* Anchored to bottom edge so the lower half acts as solid ground. */
   top: auto;
-  bottom: 8%;
+  bottom: 0;
   left: -5%;
   right: -5%;
   inset: auto;
   width: 110%;
-  height: 38%;
-  color: rgba(30, 27, 75, 0.92);
+  height: 44%;
+  color: rgba(30, 27, 75, 0.95);
 }
 
 /* === City card === */

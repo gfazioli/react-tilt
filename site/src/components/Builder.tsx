@@ -283,31 +283,16 @@ function BuilderPreview({ config }: { config: ThemeConfig }) {
             <article className="bp-card">
               <div className="bp-card-orb" aria-hidden="true" />
               <Tilt.Layer depth={config.parallaxDepth * 0.4}>
-                <header className="bp-card-header">
-                  <span className="bp-card-badge">Pro</span>
-                  <span className="bp-card-meta">29 May · 2026</span>
-                </header>
+                <span className="bp-card-badge">Pro</span>
               </Tilt.Layer>
               <Tilt.Layer depth={config.parallaxDepth}>
                 <div className="bp-card-title">
                   <h3>Aurora</h3>
-                  <p>Ambient sound system</p>
+                  <p>Sound system</p>
                 </div>
               </Tilt.Layer>
               <Tilt.Layer depth={config.parallaxDepth * 1.4}>
-                <div className="bp-card-price">
-                  <span className="bp-card-amount">$249</span>
-                  <span className="bp-card-cta">
-                    Buy →
-                  </span>
-                </div>
-              </Tilt.Layer>
-              <Tilt.Layer depth={config.parallaxDepth * 0.8}>
-                <ul className="bp-card-features">
-                  <li>· 24h battery</li>
-                  <li>· ANC + transparency</li>
-                  <li>· Bluetooth 5.3</li>
-                </ul>
+                <span className="bp-card-amount">$249</span>
               </Tilt.Layer>
             </article>
           </Tilt>
