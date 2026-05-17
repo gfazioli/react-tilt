@@ -31,7 +31,7 @@ function ProductCard() {
         <p>Light follows the cursor and a glare band sweeps across — straight-out-of-the-box studio shine.</p>
       </header>
       <div className="example-stage example-stage-product">
-        <Tilt threshold={40} hoverScale={1.04} lightEffect glareEffect>
+        <Tilt radius={16} threshold={40} hoverScale={1.04} lightEffect glareEffect>
           <article className="ex-product ex-product-front">
             <span className="ex-product-eyebrow">Headphones</span>
             <h4>Aurora ANC</h4>
@@ -52,7 +52,7 @@ function StatsTile() {
         <p>A dynamic shadow shifts opposite the tilt — the card lifts off the page with real weight.</p>
       </header>
       <div className="example-stage">
-        <Tilt threshold={25} shadowEffect>
+        <Tilt radius={14} threshold={25} shadowEffect>
           <section className="ex-stats">
             <header>
               <span className="ex-stats-eyebrow">MRR</span>
@@ -88,7 +88,7 @@ function ProfileCard() {
         <p>Spring physics replace CSS transitions for a tactile, slightly bouncy feel on every interaction.</p>
       </header>
       <div className="example-stage">
-        <Tilt threshold={30} hoverScale={1.04} springEffect springStiffness={140} springDamping={11}>
+        <Tilt radius={14} threshold={30} hoverScale={1.04} springEffect springStiffness={140} springDamping={11}>
           <section className="ex-profile">
             <div className="ex-profile-avatar" aria-hidden="true">
               AL

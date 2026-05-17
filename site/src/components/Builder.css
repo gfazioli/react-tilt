@@ -279,9 +279,18 @@
   overflow: hidden;
 }
 
+/* Classic "browser tabs" look:
+ *   - tabs row sits on a subtle bg
+ *   - a 1px line runs along the bottom of the tabs row
+ *   - the active tab carries top + side border, no bottom border, and its
+ *     bg matches the code panel below — so the tab merges with the panel
+ *   - `margin-bottom: -1px` on the active tab overlaps the row's bottom line
+ *     by exactly 1px → no visible gap between tab and panel
+ *   - a small gradient underline marks which tab is active (without a
+ *     visible 4-pixel offset to the code text). */
 .builder-code-tabs {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 4px;
   padding: 8px 8px 0;
   background: var(--color-bg-subtle);
@@ -289,16 +298,16 @@
 }
 
 .builder-code-tabs button[role="tab"] {
+  position: relative;
   padding: 8px 14px;
-  border: none;
   background: transparent;
   color: var(--color-text-muted);
   font-size: 13px;
   font-weight: 500;
-  border-radius: 8px 8px 0 0;
   border: 1px solid transparent;
   border-bottom: none;
   margin-bottom: -1px;
+  border-radius: 8px 8px 0 0;
   font-family: var(--font-mono);
 }
 
@@ -310,6 +319,19 @@
   background: var(--color-bg-elevated);
   color: var(--color-text);
   border-color: var(--color-border);
+}
+
+/* Accent underline on the active tab — flush with the tab's bottom edge, so
+ * there's no extra vertical gap visible between it and the code panel. */
+.builder-code-tabs button[role="tab"].active::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-3) 100%);
 }
 
 .builder-code-spacer {
@@ -332,14 +354,22 @@
   max-height: 480px;
 }
 
-/* Compact preview card — absolutely-positioned layers fit a 280×200 stage. */
+/* Compact preview card — flex column so it grows to fill the 280×200 stage
+ * via its content. The Tilt.Layer wrappers inside flow normally (block);
+ * absolute children would collapse the parent's height. */
 .bp-card {
+  /* No `overflow: hidden`: Tilt.Layer translations can shift content past the
+   * card border, and that "peek-out" is the whole point of layered parallax. */
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 200px;
   padding: 16px 18px;
   border-radius: 14px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
   background:
     radial-gradient(120% 80% at 0% 0%, rgba(255, 255, 255, 0.18), transparent 60%),
     linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
@@ -350,11 +380,12 @@
 }
 
 .bp-card-orb {
+  /* Tucked inside the card so the decoration doesn't visibly leak past it. */
   position: absolute;
-  right: -34px;
-  top: -34px;
-  width: 120px;
-  height: 120px;
+  right: 6px;
+  top: 6px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.45), transparent 70%);
   pointer-events: none;
@@ -362,10 +393,7 @@
 }
 
 .bp-card-badge {
-  position: absolute;
-  top: 16px;
-  left: 18px;
-  z-index: 1;
+  align-self: flex-start;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -377,16 +405,8 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-.bp-card-title {
-  position: absolute;
-  bottom: 44px;
-  left: 18px;
-  right: 18px;
-  z-index: 1;
-}
-
 .bp-card-title h3 {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 800;
   letter-spacing: -0.03em;
   margin: 0;
@@ -401,10 +421,6 @@
 }
 
 .bp-card-amount {
-  position: absolute;
-  bottom: 14px;
-  left: 18px;
-  z-index: 1;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.02em;

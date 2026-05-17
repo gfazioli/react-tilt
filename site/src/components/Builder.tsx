@@ -268,6 +268,7 @@ function BuilderPreview({ config }: { config: ThemeConfig }) {
       <div className="builder-preview-stage">
         <div className="builder-card-stage">
           <Tilt
+            radius={14}
             threshold={config.threshold}
             perspective={config.perspective}
             hoverScale={config.hoverScale}

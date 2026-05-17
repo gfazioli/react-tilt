@@ -14,20 +14,37 @@
 }
 
 .px-card {
+  /* No `overflow: hidden`: like the builder card, layers must be allowed to
+   * peek past the rounded edge — that's the parallax "lift-off" effect. */
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: 20px;
-  overflow: hidden;
   color: #fff;
   box-shadow:
     0 24px 48px -16px rgba(0, 0, 0, 0.45),
     0 8px 16px -8px rgba(0, 0, 0, 0.3);
 }
 
-/* Tilt.Layer wrappers (direct children) — fill the card so descendants can
- * position themselves relative to the full card area. */
-.px-card > * {
+/* Scene container — holds illustration layers (sky, mountains, buildings)
+ * that should stay clipped to the card's rounded shape. The title sits
+ * OUTSIDE this container and can spill past the card edge.
+ *
+ * Use `clip-path` instead of `overflow:hidden + border-radius`: the latter
+ * is unreliable when descendants have their own 3D transforms (Tilt.Layer
+ * applies translateX/Y) — some browsers fail to clip transformed children
+ * to the rounded corner, leaking a square edge. */
+.px-scene {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  clip-path: inset(0 round 20px);
+}
+
+/* Direct children of .px-card and .px-scene fill the card area so descendants
+ * can position themselves relative to it. */
+.px-card > *,
+.px-scene > * {
   position: absolute;
   inset: 0;
   pointer-events: none;

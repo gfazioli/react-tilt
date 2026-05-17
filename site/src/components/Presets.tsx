@@ -34,6 +34,7 @@ export function Presets() {
                 <div className="preset-stage">
                   <div className="preset-card-flip">
                     <Tilt
+                      radius={14}
                       threshold={c.threshold}
                       perspective={c.perspective}
                       hoverScale={c.hoverScale}

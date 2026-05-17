@@ -56,6 +56,7 @@ export function Hero() {
         <div className="hero-showcase" aria-hidden="true">
           <div className="hero-card-stage">
             <Tilt
+              radius={18}
               threshold={c.threshold}
               perspective={c.perspective}
               hoverScale={c.hoverScale}
