@@ -31,6 +31,7 @@ export interface ThemeConfig {
   lightEffect: boolean;
   glareEffect: boolean;
   shadowEffect: boolean;
+  parallaxDepth: number;
 }
 
 export const DEFAULT_CONFIG: ThemeConfig = {
@@ -45,6 +46,7 @@ export const DEFAULT_CONFIG: ThemeConfig = {
   lightEffect: false,
   glareEffect: false,
   shadowEffect: false,
+  parallaxDepth: 0,
 };
 
 interface ThemeConfigContextValue {
@@ -69,6 +71,7 @@ const ORDER: (keyof ThemeConfig)[] = [
   "lightEffect",
   "glareEffect",
   "shadowEffect",
+  "parallaxDepth",
 ];
 
 function encodeConfig(c: ThemeConfig): string {

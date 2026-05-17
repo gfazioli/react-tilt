@@ -5,6 +5,7 @@ import "./Nav.css";
 const SECTIONS = [
   { id: "features", label: "Features" },
   { id: "builder", label: "Builder" },
+  { id: "parallax", label: "Parallax" },
   { id: "presets", label: "Presets" },
   { id: "install", label: "Install" },
 ];

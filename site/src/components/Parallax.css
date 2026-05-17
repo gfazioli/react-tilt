@@ -1,0 +1,190 @@
+.parallax-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-xl);
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+@media (max-width: 720px) {
+  .parallax-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+}
+
+.px-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  color: #fff;
+  box-shadow:
+    0 24px 48px -16px rgba(0, 0, 0, 0.45),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3);
+}
+
+/* All direct layer children fill the card by default */
+.px-card > * {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* === Mountain card === */
+
+.px-card-mountain .px-sky {
+  background: linear-gradient(180deg, #fbcfe8 0%, #fda4af 32%, #f97316 62%, #4338ca 100%);
+}
+
+.px-sun {
+  /* override inset to position the sun precisely */
+  top: 16%;
+  left: 64%;
+  right: auto;
+  bottom: auto;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fef3c7 0%, #fb923c 55%, transparent 75%);
+  filter: blur(1px);
+  box-shadow: 0 0 40px rgba(251, 146, 60, 0.65);
+}
+
+.px-mountains-back {
+  top: auto;
+  bottom: 22%;
+  left: -5%;
+  right: -5%;
+  inset: auto;
+  width: 110%;
+  height: 36%;
+  color: rgba(76, 29, 149, 0.55);
+}
+
+.px-mountains-front {
+  top: auto;
+  bottom: 8%;
+  left: -5%;
+  right: -5%;
+  inset: auto;
+  width: 110%;
+  height: 38%;
+  color: rgba(30, 27, 75, 0.92);
+}
+
+/* === City card === */
+
+.px-card-city .px-citysky {
+  background: linear-gradient(180deg, #1e1b4b 0%, #4c1d95 40%, #831843 75%, #18181b 100%);
+}
+
+.px-buildings-far {
+  top: auto;
+  bottom: 14%;
+  left: -5%;
+  right: -5%;
+  inset: auto;
+  width: 110%;
+  height: 50%;
+  color: rgba(124, 58, 237, 0.45);
+}
+
+.px-buildings-mid {
+  top: auto;
+  bottom: 0;
+  left: -5%;
+  right: -5%;
+  inset: auto;
+  width: 110%;
+  height: 45%;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+/* Neon sign — centered band ABOVE buildings, BELOW title */
+.px-neon {
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  bottom: auto;
+  inset: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.px-neon-main {
+  font-family: var(--font-mono);
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #fef3c7;
+  text-shadow:
+    0 0 8px rgba(236, 72, 153, 0.95),
+    0 0 16px rgba(236, 72, 153, 0.7),
+    0 0 28px rgba(236, 72, 153, 0.45);
+  line-height: 1;
+}
+
+.px-neon-sub {
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: #fbcfe8;
+  text-shadow:
+    0 0 5px rgba(236, 72, 153, 0.7),
+    0 0 10px rgba(236, 72, 153, 0.4);
+}
+
+/* === Title — top-left by default, bottom-left if .px-title-bottom === */
+.px-title {
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  bottom: auto;
+  inset: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.px-title-bottom {
+  top: auto;
+  bottom: 18px;
+}
+
+.px-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+}
+
+.px-title h3 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 4px 0 0;
+  line-height: 1.05;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+.px-title p {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.92;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}

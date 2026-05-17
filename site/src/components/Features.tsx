@@ -92,6 +92,37 @@ const FEATURES = [
       </>
     ),
   },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+        <path d="m2 17 10 5 10-5" />
+        <path d="m2 12 10 5 10-5" />
+      </svg>
+    ),
+    title: "Layered parallax depth",
+    body: (
+      <>
+        Wrap any child in <code>&lt;Tilt.Layer depth={"{n}"}&gt;</code> and it floats at its own depth — different
+        layers move at different rates, just like macOS wallpapers or the Apple TV grid.
+      </>
+    ),
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 1v6m0 10v6M4.22 4.22l4.24 4.24m7.08 7.08 4.24 4.24M1 12h6m10 0h6M4.22 19.78l4.24-4.24m7.08-7.08 4.24-4.24" />
+      </svg>
+    ),
+    title: "Reduced-motion aware",
+    body: (
+      <>
+        Reads <code>prefers-reduced-motion</code> automatically — disables tilt, scale and transitions so vestibular
+        users get a calm static card. No extra prop required.
+      </>
+    ),
+  },
 ];
 
 export function Features() {

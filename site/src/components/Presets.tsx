@@ -46,9 +46,21 @@ export function Presets() {
                       glareEffect={c.glareEffect}
                       shadowEffect={c.shadowEffect}
                     >
-                      <div className="preset-face preset-face-front">
-                        <span>A</span>
-                      </div>
+                      <article className="preset-mock">
+                        <div className="preset-mock-orb" aria-hidden="true" />
+                        <header className="preset-mock-header">
+                          <span className="preset-mock-tag">{preset.name.split(" ")[0]}</span>
+                          <span className="preset-mock-dot" aria-hidden="true" />
+                        </header>
+                        <div className="preset-mock-title">
+                          <span className="preset-mock-eyebrow">Sound</span>
+                          <h4>Aurora</h4>
+                        </div>
+                        <div className="preset-mock-footer">
+                          <span className="preset-mock-price">$249</span>
+                          <span className="preset-mock-cta">Hover →</span>
+                        </div>
+                      </article>
                     </Tilt>
                   </div>
                 </div>

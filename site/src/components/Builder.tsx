@@ -8,6 +8,7 @@ import {
   type ThemeConfig,
 } from "../hooks/useThemeConfig";
 import { CopyButton } from "./CopyButton";
+import { CodeBlock } from "./CodeBlock";
 import "./Builder.css";
 
 const EASING_OPTIONS: { id: EasingKey; label: string }[] = [
@@ -44,8 +45,8 @@ export function Builder() {
                   max={60}
                   step={1}
                   value={config.threshold}
-                  format={(v) => `${v}°`}
-                  onChange={(v) => patch({ threshold: v })}
+                  format={v => `${v}°`}
+                  onChange={v => patch({ threshold: v })}
                 />
                 <NumRow
                   label="Perspective"
@@ -53,8 +54,8 @@ export function Builder() {
                   max={2400}
                   step={50}
                   value={config.perspective}
-                  format={(v) => `${v}px`}
-                  onChange={(v) => patch({ perspective: v })}
+                  format={v => `${v}px`}
+                  onChange={v => patch({ perspective: v })}
                 />
                 <NumRow
                   label="Hover scale"
@@ -62,8 +63,17 @@ export function Builder() {
                   max={110}
                   step={1}
                   value={Math.round(config.hoverScale * 100)}
-                  format={(v) => `${(v / 100).toFixed(2)}x`}
-                  onChange={(v) => patch({ hoverScale: v / 100 })}
+                  format={v => `${(v / 100).toFixed(2)}x`}
+                  onChange={v => patch({ hoverScale: v / 100 })}
+                />
+                <NumRow
+                  label="Parallax depth"
+                  min={0}
+                  max={30}
+                  step={1}
+                  value={config.parallaxDepth}
+                  format={v => (v === 0 ? "off" : `${v}px`)}
+                  onChange={v => patch({ parallaxDepth: v })}
                 />
               </div>
             </div>
@@ -77,8 +87,8 @@ export function Builder() {
                   max={800}
                   step={10}
                   value={config.transitionDuration}
-                  format={(v) => `${v}ms`}
-                  onChange={(v) => patch({ transitionDuration: v })}
+                  format={v => `${v}ms`}
+                  onChange={v => patch({ transitionDuration: v })}
                 />
               </div>
             </div>
@@ -87,7 +97,7 @@ export function Builder() {
               title="Easing"
               options={EASING_OPTIONS}
               value={config.transitionEasing}
-              onChange={(v) => patch({ transitionEasing: v })}
+              onChange={v => patch({ transitionEasing: v })}
             />
 
             <div className="builder-group">
@@ -113,8 +123,8 @@ export function Builder() {
                       max={400}
                       step={5}
                       value={config.springStiffness}
-                      format={(v) => `${v}`}
-                      onChange={(v) => patch({ springStiffness: v })}
+                      format={v => `${v}`}
+                      onChange={v => patch({ springStiffness: v })}
                     />
                     <NumRow
                       label="Damping"
@@ -122,8 +132,8 @@ export function Builder() {
                       max={30}
                       step={1}
                       value={config.springDamping}
-                      format={(v) => `${v}`}
-                      onChange={(v) => patch({ springDamping: v })}
+                      format={v => `${v}`}
+                      onChange={v => patch({ springDamping: v })}
                     />
                   </>
                 )}
@@ -207,7 +217,7 @@ function NumRow({
         max={max}
         step={step ?? 1}
         value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={e => onChange(Number(e.target.value))}
       />
       <span className="builder-row-value">{format(value)}</span>
     </label>
@@ -231,7 +241,7 @@ function PillRow<T extends string>({
       <div className="builder-rows">
         <div className="builder-row builder-row-pills">
           <div className="builder-pills" role="radiogroup" aria-label={title}>
-            {options.map((opt) => (
+            {options.map(opt => (
               <button
                 key={opt.id}
                 type="button"
@@ -270,9 +280,36 @@ function BuilderPreview({ config }: { config: ThemeConfig }) {
             glareEffect={config.glareEffect}
             shadowEffect={config.shadowEffect}
           >
-            <div className="builder-face builder-face-front">
-              <span>Front</span>
-            </div>
+            <article className="bp-card">
+              <div className="bp-card-orb" aria-hidden="true" />
+              <Tilt.Layer depth={config.parallaxDepth * 0.4}>
+                <header className="bp-card-header">
+                  <span className="bp-card-badge">Pro</span>
+                  <span className="bp-card-meta">29 May · 2026</span>
+                </header>
+              </Tilt.Layer>
+              <Tilt.Layer depth={config.parallaxDepth}>
+                <div className="bp-card-title">
+                  <h3>Aurora</h3>
+                  <p>Ambient sound system</p>
+                </div>
+              </Tilt.Layer>
+              <Tilt.Layer depth={config.parallaxDepth * 1.4}>
+                <div className="bp-card-price">
+                  <span className="bp-card-amount">$249</span>
+                  <span className="bp-card-cta">
+                    Buy →
+                  </span>
+                </div>
+              </Tilt.Layer>
+              <Tilt.Layer depth={config.parallaxDepth * 0.8}>
+                <ul className="bp-card-features">
+                  <li>· 24h battery</li>
+                  <li>· ANC + transparency</li>
+                  <li>· Bluetooth 5.3</li>
+                </ul>
+              </Tilt.Layer>
+            </article>
           </Tilt>
         </div>
       </div>
@@ -305,9 +342,11 @@ function BuilderPreview({ config }: { config: ThemeConfig }) {
             <span>Copy</span>
           </CopyButton>
         </div>
-        <pre className="builder-code-block">
-          <code>{tab === "jsx" ? jsxSnippet(config) : cssSnippet()}</code>
-        </pre>
+        <CodeBlock
+          code={tab === "jsx" ? jsxSnippet(config) : cssSnippet()}
+          lang={tab === "jsx" ? "tsx" : "css"}
+          className="builder-code-block"
+        />
       </div>
     </div>
   );
@@ -331,15 +370,23 @@ function jsxSnippet(c: ThemeConfig): string {
   if (c.glareEffect !== DEFAULT_CONFIG.glareEffect) lines.push(`  glareEffect`);
   if (c.shadowEffect !== DEFAULT_CONFIG.shadowEffect) lines.push(`  shadowEffect`);
 
-  if (lines.length === 0) {
-    return `<Tilt>
-  <Card />
+  const hasParallax = c.parallaxDepth !== DEFAULT_CONFIG.parallaxDepth;
+  const opener = lines.length === 0 ? "<Tilt>" : `<Tilt\n${lines.join("\n")}\n>`;
+
+  if (hasParallax) {
+    return `${opener}
+  <article className="card">
+    <Tilt.Layer depth={${c.parallaxDepth}}>
+      <h3>Title</h3>
+    </Tilt.Layer>
+    <Tilt.Layer depth={${(c.parallaxDepth * 1.4).toFixed(1)}}>
+      <p>Body content moves more — depth multiplies.</p>
+    </Tilt.Layer>
+  </article>
 </Tilt>`;
   }
 
-  return `<Tilt
-${lines.join("\n")}
->
+  return `${opener}
   <Card />
 </Tilt>`;
 }

@@ -1,6 +1,7 @@
 import { Hero } from "../components/Hero";
 import { Features } from "../components/Features";
 import { Builder } from "../components/Builder";
+import { Parallax } from "../components/Parallax";
 import { Presets } from "../components/Presets";
 import { Examples } from "../components/Examples";
 import { Install } from "../components/Install";
@@ -17,6 +18,7 @@ export function Landing() {
         <Hero />
         <Features />
         <Builder />
+        <Parallax />
         <Presets />
         <Examples />
         <Install />

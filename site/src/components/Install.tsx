@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CopyButton } from "./CopyButton";
+import { CodeBlock } from "./CodeBlock";
 import "./Install.css";
 
 const TABS = [
@@ -53,11 +54,7 @@ export function Install() {
               ))}
             </div>
             <div className="install-cmd">
-              <pre>
-                <code>
-                  <span className="install-prompt">$</span> {cmd}
-                </code>
-              </pre>
+              <CodeBlock code={`$ ${cmd}`} lang="bash" />
               <CopyButton text={cmd} variant="ghost" className="copy-btn-ghost" />
             </div>
           </div>
@@ -68,9 +65,7 @@ export function Install() {
               <span className="install-spacer" />
               <CopyButton text={USAGE} variant="ghost" className="copy-btn-ghost" />
             </div>
-            <pre className="install-usage">
-              <code>{USAGE}</code>
-            </pre>
+            <CodeBlock code={USAGE} lang="tsx" className="install-usage" />
           </div>
         </div>
       </div>
