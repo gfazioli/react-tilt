@@ -1,7 +1,7 @@
 {
   "name": "@gfazioli/react-tilt",
   "version": "1.0.0",
-  "description": "Tilt is a React component that turns any element into an interactive 3D card with parallax, glare, light, shadow, gyroscope, spring physics and keyboard support — themeable via CSS variables, zero runtime dependencies.",
+  "description": "Tilt is a React component that turns any element into an interactive 3D card with parallax, glare, light, shadow, gyroscope, spring physics and keyboard support \u2014 themeable via CSS variables, zero runtime dependencies.",
   "license": "MIT",
   "author": "Giovambattista Fazioli",
   "homepage": "https://gfazioli.github.io/react-tilt/",
@@ -103,5 +103,10 @@
     "typescript-eslint": "^8.18.2",
     "vite": "^5.4.11",
     "vitest": "^2.1.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild": "^0.25.0"
+    }
   }
 }
