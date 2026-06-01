@@ -25,6 +25,21 @@ export function Hero() {
           <span className="eyebrow-dot" /> v1.0 · React 18 &amp; 19
         </span>
 
+        <div className="hero-badge">
+          <a
+            href="https://www.npmjs.com/package/@gfazioli/react-tilt"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="Monthly downloads on npm"
+          >
+            <img
+              src="https://img.shields.io/npm/dm/@gfazioli/react-tilt?style=flat-square&color=8b5cf6"
+              alt="npm downloads per month"
+              height={20}
+            />
+          </a>
+        </div>
+
         <h1>
           Cards with depth, <span className="gradient-text">no library bloat</span>.
         </h1>

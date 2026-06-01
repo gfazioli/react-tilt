@@ -54,6 +54,16 @@
   color: var(--color-text);
 }
 
+.hero-badge {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+.hero-badge img {
+  display: block;
+}
+
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
