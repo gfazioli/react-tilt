@@ -1,6 +1,6 @@
 {
   "name": "@gfazioli/react-tilt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tilt is a React component that turns any element into an interactive 3D card with parallax, glare, light, shadow, gyroscope, spring physics and keyboard support — themeable via CSS variables, zero runtime dependencies.",
   "license": "MIT",
   "author": "Giovambattista Fazioli",
