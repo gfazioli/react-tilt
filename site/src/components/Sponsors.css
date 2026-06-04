@@ -1,0 +1,125 @@
+.sponsors {
+  position: relative;
+}
+
+.sponsors-title {
+  background: linear-gradient(45deg, #e64980, #be4bdb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sponsors-wall {
+  list-style: none;
+  margin: 0 0 var(--space-2xl);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xl);
+}
+
+.sponsor-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  transition:
+    transform 200ms ease,
+    color 200ms ease;
+}
+
+.sponsor-item:hover {
+  transform: translateY(-2px);
+  color: var(--color-text);
+}
+
+.sponsor-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-muted);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color 200ms ease,
+    box-shadow 300ms ease;
+}
+
+.sponsor-item:hover .sponsor-avatar {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.sponsor-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Empty "Your logo here" slot */
+.sponsor-slot-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px dashed var(--color-border-strong);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-text-subtle);
+  background: transparent;
+  transition:
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.sponsor-slot:hover .sponsor-slot-circle {
+  border-color: #be4bdb;
+  color: #be4bdb;
+}
+
+.sponsors-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.sponsors-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(45deg, #e64980, #be4bdb);
+  box-shadow: 0 8px 24px -10px rgba(190, 75, 219, 0.6);
+  transition:
+    transform 120ms ease,
+    box-shadow 200ms ease,
+    filter 200ms ease;
+}
+
+.sponsors-btn:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 32px -10px rgba(190, 75, 219, 0.7);
+}
+
+.sponsors-btn:active {
+  transform: translateY(0);
+}

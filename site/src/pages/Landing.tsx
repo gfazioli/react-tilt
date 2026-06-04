@@ -6,6 +6,7 @@ import { Presets } from "../components/Presets";
 import { Examples } from "../components/Examples";
 import { Install } from "../components/Install";
 import { Family } from "../components/Family";
+import { Sponsors } from "../components/Sponsors";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
 import { ThemeConfigProvider } from "../hooks/useThemeConfig";
@@ -23,6 +24,7 @@ export function Landing() {
         <Examples />
         <Install />
         <Family />
+        <Sponsors />
       </main>
       <Footer />
     </ThemeConfigProvider>

@@ -16,14 +16,8 @@ export function Footer() {
           <a href="https://github.com/gfazioli/react-tilt" target="_blank" rel="noreferrer noopener">
             GitHub
           </a>
-          <a href="https://github.com/sponsors/gfazioli" target="_blank" rel="noreferrer noopener">
-            Sponsor
-          </a>
-          <a
-            href="https://github.com/gfazioli/react-tilt/blob/main/LICENSE"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+          <a href="#sponsors">Sponsor</a>
+          <a href="https://github.com/gfazioli/react-tilt/blob/main/LICENSE" target="_blank" rel="noreferrer noopener">
             MIT License
           </a>
         </nav>
