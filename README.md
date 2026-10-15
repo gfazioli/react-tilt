@@ -23,6 +23,11 @@
 
 </div>
 
+<div align="center">
+  <p><img src="https://raw.githubusercontent.com/gfazioli/gfazioli/master/glancecard/react-tilt.svg" width="880" alt="react-tilt at a glance, refreshed daily: commits, releases, stars, issues and pull requests, a year of commit activity, the weekly rhythm, languages, latest commits and releases, contributors" /><br>
+  <sub>Made with <a href="https://github.com/gfazioli/glancecard">glancecard</a> · refreshed daily</sub></p>
+</div>
+
 <br/>
 
 > Wrap any element into an interactive 3D card that tilts with the cursor, with optional parallax depth, glare, light, shadow, gyroscope and spring physics. Zero runtime dependencies, ~6 KB gzipped.
